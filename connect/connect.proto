@@ -1,0 +1,12 @@
+package im.connect;
+import "err_code.proto";
+
+message ConnectRequest {
+    optional string conn_id = 1;
+    optional string token = 2;
+    optional int64 sign = 3;
+}
+
+message ConnectResponse {
+    optional ErrCode err_code = 1 [default = OK];
+}

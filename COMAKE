@@ -1,0 +1,31 @@
+#edit-mode: -*- python -*-
+#coding:utf8
+
+#google code generator, 如果源码里面有proto文件则需要指定
+PROTOC('../protobuf/bin/protoc')
+
+#thrift code generator, 如果源码里面有thrift文件则需要指定
+THRIFT('../thrift/bin/thrift')
+
+#编译器
+CXX('g++')
+
+#g++参数
+CXXFLAGS('-D_GNU_SOURCE -D__STDC_LIMIT_MACROS -g -pipe -W -Wall -fPIC -fno-omit-frame-pointer')
+
+#链接参数
+LDFLAGS('-levent -ldl -lpthread -lm -lrt')
+
+#设置额外的include path，默认为./和每个模块的xx/include, xxx/output/include
+INCLUDE(GLOB('./xxx'))
+
+#指定依赖的模块
+sources = GLOB('connect/*.proto *.proto')
+headers = GLOB('')
+#需要产出的bin, 产出目录./output/bin/
+#传出的静态库, 产出目录./output/lib ./output/include
+STATIC_LIB('liba.a', sources, headers)
+
+#指定output目录
+OUTPUT('output')
+

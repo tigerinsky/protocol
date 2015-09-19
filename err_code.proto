@@ -1,0 +1,5 @@
+package im;
+
+enum ErrCode {
+    OK = 0;
+}

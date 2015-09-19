@@ -1,0 +1,9 @@
+package im.connect;
+
+message HiRequest {
+    optional string msg = 1 [default="hi"];
+}
+
+message HiResponse {
+    optional string msg = 1 [default="hi"];
+}
