@@ -1,5 +1,5 @@
 package im.push;
-import "err_code.proto"
+import "err_code.proto";
 
 message TextMeta {
     optional string content = 1;
@@ -43,7 +43,7 @@ message PlainTextMessage {//音频转换成文本后，推送的文本消息
 message StatusMessage {
     optional int32 uid = 1;//用户
 	optional int32 meet_id = 2;//所在的会议
-	optional int 32 status = 3; //0:offline 1:online
+	optional int32 status = 3; //0:offline 1:online
 }
 
 enum ChannelType {//app需要用长连接的频道，不同的频道有不同的消息格式，暂时先支持会议系统，用IMMessage消息格式. 后续可以支持推送，私信等频道
@@ -55,7 +55,7 @@ enum ChannelType {//app需要用长连接的频道，不同的频道有不同的
 
 message MessageRequest {
     optional ChannelType channel_type = 1;
-    repeated string dest_uid_list = 2;//需要发送到的目的uidlist
+    repeated string conn_id_list = 2;//需要发送到的目的connidlist
     optional IMMessage im_message = 3;//channeltype=1,2时，对应这个message
 	optional PlainTextMessage plaintext_message = 4;//3时，对应这个message
 	optional StatusMessage status_message = 5; //channeltype=4, 对应这个message

@@ -20,11 +20,12 @@ LDFLAGS('-levent -ldl -lpthread -lm -lrt')
 INCLUDE(GLOB('./xxx'))
 
 #指定依赖的模块
-sources = GLOB('connect/*.proto *.proto')
+sources = GLOB('connect/*.proto *.proto push/*.proto')
 headers = GLOB('')
+#
 #需要产出的bin, 产出目录./output/bin/
 #传出的静态库, 产出目录./output/lib ./output/include
-STATIC_LIB('liba.a', sources, headers)
+STATIC_LIB('libim.a', sources, headers)
 
 #指定output目录
 OUTPUT('output')
