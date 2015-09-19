@@ -60,3 +60,7 @@ message MessageRequest {
 	optional PlainTextMessage plaintext_message = 4;//3时，对应这个message
 	optional StatusMessage status_message = 5; //channeltype=4, 对应这个message
 }
+
+message MessageResponse {
+    optional ErrCode err_code = 1 [default = OK];
+}
