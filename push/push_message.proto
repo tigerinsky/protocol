@@ -46,11 +46,18 @@ message StatusMessage {
 	optional int32 status = 3; //0:offline 1:online
 }
 
+message RoleChangeMessage {
+    optional int32 uid = 1; //用户
+    optional int32 meet_id = 2; //所在的会议
+    optional int32 type = 3; //角色
+}
+
 enum ChannelType {//app需要用长连接的频道，不同的频道有不同的消息格式，暂时先支持会议系统，用IMMessage消息格式. 后续可以支持推送，私信等频道
     MEETING_MAIN = 1;//上方主会场
 	MEETING_DISCUSS = 2;//下方讨论区
 	METTING_TRANS = 3;//音频转换成文字
 	METTING_STATUS = 4; //在线状态更改消息
+    METTING_ROLE = 5; //角色变更消息
 }
 
 message MessageRequest {
@@ -59,6 +66,7 @@ message MessageRequest {
     optional IMMessage im_message = 3;//channeltype=1,2时，对应这个message
 	optional PlainTextMessage plaintext_message = 4;//3时，对应这个message
 	optional StatusMessage status_message = 5; //channeltype=4, 对应这个message
+    optional RoleChangeMessage role_change_message = 6; //channeltype=5
 }
 
 message MessageResponse {
