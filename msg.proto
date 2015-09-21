@@ -1,0 +1,6 @@
+package im;
+
+message msg {
+    optional string name = 1;
+    optional bytes data = 2;
+}
