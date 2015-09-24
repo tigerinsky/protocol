@@ -20,7 +20,7 @@ LDFLAGS('-levent -ldl -lpthread -lm -lrt')
 INCLUDE(GLOB('./xxx'))
 
 #指定依赖的模块
-sources = GLOB('connect/*.proto *.proto push/*.proto')
+sources = GLOB('client/*.proto *.proto push/*.proto')
 headers = GLOB('')
 #
 #需要产出的bin, 产出目录./output/bin/

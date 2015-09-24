@@ -3,4 +3,5 @@ package im;
 enum ErrCode {
     OK = 0;
     ILLEGAL_REQUEST = 1;
+    INVALID_CONNECTION = 2;
 }
