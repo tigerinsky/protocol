@@ -1,4 +1,4 @@
-package im.connect;
+package im.client;
 import "err_code.proto";
 
 message ConnectRequest {

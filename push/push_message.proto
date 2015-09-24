@@ -84,14 +84,5 @@ message SendMessageRequest {
 
 message SendMessageResponse {
     optional ErrCode err_code = 1 [default = OK];
-    repeated ErrCode err_info = 2;
+    repeated ErrCode err_info = 2 [packed = true];
 }
-
-message NotifyMessageRequest {
-    optional NotifyMessage msg = 1;
-}
-
-message NotifyMessageResponse {
-    optional ErrCode err_code = 1 [default = OK];
-}
-

@@ -1,4 +1,4 @@
-package im.connect;
+package im.client;
 
 message HiRequest {
     optional string msg = 1 [default="hi"];

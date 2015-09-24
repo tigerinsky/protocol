@@ -1,0 +1,12 @@
+package im.client;
+import "err_code.proto";
+import "push/push_message.proto";
+
+message NotifyMessageRequest {
+    optional im.push.NotifyMessage msg = 1;
+}
+
+message NotifyMessageResponse {
+    optional ErrCode err_code = 1 [default = OK];
+}
+
