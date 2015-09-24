@@ -67,16 +67,31 @@ enum ChannelType {//app需要用长连接的频道，不同的频道有不同的
     METTING_ROLE = 5; //角色变更消息
 }
 
-message MessageRequest {
+message NotifyMessage {
     optional ChannelType channel_type = 1;
-    repeated string conn_id_list = 2;//需要发送到的目的connidlist
     /*optional IMMessage im_message = 3;//channeltype=1,2时，对应这个message
 	optional PlainTextMessage plaintext_message = 4;//3时，对应这个message
 	optional StatusMessage status_message = 5; //channeltype=4, 对应这个message
     optional RoleChangeMessage role_change_message = 6; //channeltype=5*/
-    optional bytes data = 3;
+    optional bytes data = 2;
 }
 
-message MessageResponse {
+
+message SendMessageRequest {
+    repeated string conn_id_list = 1;//需要发送到的目的connidlist
+    optional NotifyMessage msg = 2;
+}
+
+message SendMessageResponse {
+    optional ErrCode err_code = 1 [default = OK];
+    repeated ErrCode err_info = 2;
+}
+
+message NotifyMessageRequest {
+    optional NotifyMessage msg = 1;
+}
+
+message NotifyMessageResponse {
     optional ErrCode err_code = 1 [default = OK];
 }
+

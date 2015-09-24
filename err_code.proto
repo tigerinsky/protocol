@@ -2,4 +2,5 @@ package im;
 
 enum ErrCode {
     OK = 0;
+    ILLEGAL_REQUEST = 1;
 }
