@@ -30,6 +30,7 @@ g_protos = set()
 g_thrifts = set()
 g_content = ''
 g_output_dir = './output'
+g_end_cmds = [] 
 
 def log_warning(str):
     print("\033[31m WARNING: " + str + "\033[0m" )
@@ -69,6 +70,10 @@ def DEP_LIB(lib_arr):
 def OUTPUT(str):
     global g_output_dir
     g_output_dir = str
+
+def END_CMD(cmds):
+    global g_end_cmds
+    g_end_cmds = cmds 
 
 def GLOB(str):
     files = []
@@ -234,10 +239,13 @@ def _generate_phony():
     global g_libs
     global g_cpps
     global g_output_dir
+    global g_end_cmds
     _add_content('#---------- phony ----------\n')
     target_list = ['prepare']
     target_list.extend(g_apps.keys())
     target_list.extend(g_libs.keys())
+    if len(g_end_cmds) > 0:
+        target_list.append('end');
     _add_content_ext('all', True, target_list, [])
     _add_content('\n')
     prepare_cmds = []
@@ -247,6 +255,9 @@ def _generate_phony():
         prepare_cmds.append('mkdir -p %s/lib %s/include' % (g_output_dir, g_output_dir))
     _add_content_ext('prepare', True, [], prepare_cmds)
     _add_content('\n')
+    if 0 != len(g_end_cmds):
+        _add_content_ext('end', True, [], g_end_cmds)
+        _add_content('\n')
     _add_content_ext('clean', 
                      True, 
                      [], 

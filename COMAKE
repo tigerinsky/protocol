@@ -25,8 +25,11 @@ headers = GLOB('')
 #
 #需要产出的bin, 产出目录./output/bin/
 #传出的静态库, 产出目录./output/lib ./output/include
-STATIC_LIB('libim.a', sources, headers)
+STATIC_LIB('im', sources, headers)
 
 #指定output目录
 OUTPUT('output')
+
+#结束时的自定义命令
+END_CMD(['mkdir -p output/include/push', 'mv output/include/push_message.pb.h ./output/include/push/'])
 
