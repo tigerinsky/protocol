@@ -1,9 +1,9 @@
 package im.client;
 import "err_code.proto";
-import "push/push_message.proto";
+import "common/data.proto";
 
 message NotifyMessageRequest {
-    optional im.push.NotifyMessage msg = 1;
+    optional im.common.NotifyMessage msg = 1;
 }
 
 message NotifyMessageResponse {
