@@ -78,11 +78,11 @@ message NotifyMessage {
 
 
 message SendMessageRequest {
-    repeated string conn_id_list = 1;//需要发送到的目的connidlist
-    optional NotifyMessage msg = 2;
+    repeated uint64 conn_id_list = 1 [packed = true];//需要发送到的目的connidlist
+    optional uint64 mid = 2;
+    optional NotifyMessage msg = 3;
 }
 
 message SendMessageResponse {
     optional ErrCode err_code = 1 [default = OK];
-    repeated ErrCode err_info = 2 [packed = true];
 }
