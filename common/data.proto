@@ -1,0 +1,76 @@
+package im.common;
+
+message TextMeta {
+    optional string content = 1;
+}
+
+message ImageMeta {
+    optional string url = 1;
+    optional int32 height = 2;
+    optional int32 width = 3;
+}
+
+message AudioMeta {
+    optional string url = 1;
+    optional string format = 2;//音频格式
+    optional int32 duration = 3;//音频时长，单位s
+}
+
+enum IMMessageType{
+    TEXT = 1;
+    IMAGE = 2;
+    AUDIO = 3;
+}
+
+message User {
+    optional int32 uid = 1;
+    optional string sname = 2;
+    optional string avatar = 3;
+    optional int32 role = 4;//身份
+}
+
+message IMMessage {//普通im消息
+    optional IMMessageType type = 1;
+    optional int64 message_id = 2;
+    optional User from_user = 3;
+    optional TextMeta text = 4;
+    optional ImageMeta image = 5;
+    optional AudioMeta audio = 6;
+	optional bool is_question = 7;
+	optional int32 timestamp = 8;
+}
+
+message PlainTextMessage {//音频转换成文本后，推送的文本消息
+    optional TextMeta text = 1;//具体文字内容
+	optional int32 relation_message_id = 2;//关联的消息id
+	optional int32 timestamp = 3;
+}
+
+message StatusMessage {
+    optional User user = 1;//用户
+	optional int32 meet_id = 2;//所在的会议
+	optional int32 status = 3; //0:offline 1:online
+}
+
+message RoleChangeMessage {
+    optional User user = 1; //用户
+    optional int32 meet_id = 2; //所在的会议
+    optional int32 type = 3; //角色
+}
+
+enum ChannelType {//app需要用长连接的频道，不同的频道有不同的消息格式，暂时先支持会议系统，用IMMessage消息格式. 后续可以支持推送，私信等频道
+    MEETING_MAIN = 1;//上方主会场
+	MEETING_DISCUSS = 2;//下方讨论区
+	METTING_TRANS = 3;//音频转换成文字
+	METTING_STATUS = 4; //在线状态更改消息
+    METTING_ROLE = 5; //角色变更消息
+}
+
+message NotifyMessage {
+    optional ChannelType channel_type = 1;
+    /*optional IMMessage im_message = 3;//channeltype=1,2时，对应这个message
+	optional PlainTextMessage plaintext_message = 4;//3时，对应这个message
+	optional StatusMessage status_message = 5; //channeltype=4, 对应这个message
+    optional RoleChangeMessage role_change_message = 6; //channeltype=5*/
+    optional bytes data = 2;
+}
