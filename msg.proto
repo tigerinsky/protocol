@@ -1,7 +1,7 @@
 package im;
 
 message Msg {
-    optional int32 mid = 1; 
+    optional uint64 mid = 1; 
     optional string name = 2;
     optional bytes content = 3;
 }

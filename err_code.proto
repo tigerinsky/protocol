@@ -5,4 +5,5 @@ enum ErrCode {
     ILLEGAL_REQUEST = 1;
     INVALID_CONNECTION = 2;
     SERVER_TOO_BUSY = 3;
+    INTERNAL_ERR = 4;
 }
