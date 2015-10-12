@@ -38,23 +38,25 @@ message IMMessage {//普通im消息
     optional AudioMeta audio = 6;
 	optional bool is_question = 7;
 	optional int32 timestamp = 8;
+    optional int32 meeting_id = 9;
 }
 
 message PlainTextMessage {//音频转换成文本后，推送的文本消息
     optional TextMeta text = 1;//具体文字内容
 	optional int32 relation_message_id = 2;//关联的消息id
 	optional int32 timestamp = 3;
+    optional int32 meeting_id = 4;
 }
 
 message StatusMessage {
     optional User user = 1;//用户
-	optional int32 meet_id = 2;//所在的会议
+	optional int32 meeting_id = 2;//所在的会议
 	optional int32 status = 3; //0:offline 1:online
 }
 
 message RoleChangeMessage {
     optional User user = 1; //用户
-    optional int32 meet_id = 2; //所在的会议
+    optional int32 meeting_id = 2; //所在的会议
     optional int32 type = 3; //角色
 }
 
