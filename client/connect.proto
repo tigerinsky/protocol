@@ -2,7 +2,7 @@ package im.client;
 import "err_code.proto";
 
 message ConnectRequest {
-    optional uint64 conn_id = 1;
+    optional string conn_id = 1;
     optional string token = 2;
     optional int64 sign = 3;
 }
