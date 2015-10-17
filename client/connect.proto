@@ -4,7 +4,7 @@ import "err_code.proto";
 message ConnectRequest {
     optional string conn_id = 1;
     optional string token = 2;
-    optional int64 sign = 3;
+    optional string sign = 3;
 }
 
 message ConnectResponse {
