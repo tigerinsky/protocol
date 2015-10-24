@@ -2,8 +2,7 @@ package im.router;
 import "err_code.proto";
 
 message DropConnectRequest {
-    optional uint64 begin = 1;
-    optional uint64 end = 2;
+    optional uint64 conn_id = 1;
 }
 
 message DropConnectResponse {
