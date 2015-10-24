@@ -1,0 +1,7 @@
+package im.client;
+import "err_code.proto";
+
+message ReConnectRequest {
+    optional string conn_id = 1;
+}
+
