@@ -1,0 +1,11 @@
+package im.router;
+import "err_code.proto";
+
+message DropConnectRequest {
+    optional uint64 begin = 1;
+    optional uint64 end = 2;
+}
+
+message DropConnectResponse {
+    optional ErrCode err_code = 1 [default = OK];
+} 
