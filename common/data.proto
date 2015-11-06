@@ -60,12 +60,21 @@ message RoleChangeMessage {
     optional int32 meeting_id = 2; //所在的会议
 }
 
+message QuitMessage {
+    optional User user = 1; //退出的用户id
+    optional int32 meeting_id = 2; //退出的会议
+    optional int32 type = 3;//原因类型 1: 用户主动退出， 2：用户进入其它会议被t掉
+    optional String reason = 4; //退出原因
+}
+
 enum ChannelType {//app需要用长连接的频道，不同的频道有不同的消息格式，暂时先支持会议系统，用IMMessage消息格式. 后续可以支持推送，私信等频道
     MEETING_MAIN = 1;//上方主会场
     MEETING_DISCUSS = 2;//下方讨论区
     METTING_TRANS = 3;//音频转换成文字
     METTING_STATUS = 4; //在线状态更改消息
     METTING_ROLE = 5; //角色变更消息
+    MEETING_QUIT = 6; //退出会议(通知用户其它设备退出会议)
+    
 }
 
 message NotifyMessage {
