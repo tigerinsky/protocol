@@ -64,7 +64,7 @@ message QuitMessage {
     optional User user = 1; //退出的用户id
     optional int32 meeting_id = 2; //退出的会议
     optional int32 type = 3;//原因类型 1: 用户主动退出， 2：用户进入其它会议被t掉
-    optional String reason = 4; //退出原因
+    optional string reason = 4; //退出原因
 }
 
 enum ChannelType {//app需要用长连接的频道，不同的频道有不同的消息格式，暂时先支持会议系统，用IMMessage消息格式. 后续可以支持推送，私信等频道
