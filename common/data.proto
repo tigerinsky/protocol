@@ -53,6 +53,7 @@ message StatusMessage {
     optional User user = 1;//用户
     optional int32 meeting_id = 2;//所在的会议
     optional int32 status = 3; //0:offline 1:online
+    optional int32 online_count = 4; //当前在线总人数
 }
 
 message RoleChangeMessage {
