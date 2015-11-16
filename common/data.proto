@@ -27,6 +27,8 @@ message User {
     optional string sname = 2;
     optional string avatar = 3;
     optional int32 role = 4;//身份
+    optional string company = 5;//所在公司
+    optional string company_job = 6; //职位
 }
 
 message IMMessage {//普通im消息
